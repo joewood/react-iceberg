@@ -1,0 +1,4 @@
+/warehouse
+/metastore_db
+*.log
+proxylogon*.json

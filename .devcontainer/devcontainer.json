@@ -1,0 +1,43 @@
+{
+  "name": "pyspark",
+  "build": {
+    "dockerfile": "./Dockerfile",
+  },
+  // "image": "jupyter/pyspark-notebook",
+
+  // Set *default* container specific settings.json values on container create.
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+
+  // Add the IDs of extensions you want installed when the container is created.
+  "extensions": [
+    "ms-python.python",
+    "dvirtz.parquet-viewer",
+    "ms-toolsai.jupyter"
+  ],
+  "remoteEnv": {
+    // "PYSPARK_DRIVER_PYTHON":"jupyter",
+    // "PYSPARK_DRIVER_PYTHON_OPTS":"notebook"
+  },
+
+  // Use 'forwardPorts' to make a list of ports inside the container available locally.
+  "forwardPorts": [8888, 4040, 4041],
+  // "initializeCommand": "spark-sql --packages org.apache.iceberg:iceberg-spark3-runtime:0.11.1",
+                    // --conf spark.sql.extensions=org.apache.iceberg.spark.extensions.IcebergSparkSessionExtensions \
+                    // --conf spark.sql.catalog.spark_catalog=org.apache.iceberg.spark.SparkSessionCatalog \
+                    // --conf spark.sql.catalog.spark_catalog.type=hive \
+                    // --conf spark.sql.catalog.local=org.apache.iceberg.spark.SparkCatalog \
+                    // --conf spark.sql.catalog.local.type=hadoop \
+                    // --conf spark.sql.catalog.local.warehouse=$PWD/warehouse",
+  
+  // Uncomment to use the Docker CLI from inside the container. See https://aka.ms/vscode-remote/samples/docker-from-docker.
+  // "mounts": [ "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind" ],
+
+  // Uncomment when using a ptrace-based debugger like C++, Go, and Rust
+  // "runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
+
+  // Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
+  "remoteUser": "jovyan"
+  // this is the user defined in the jupyter container
+}
