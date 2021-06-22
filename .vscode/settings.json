@@ -1,4 +1,9 @@
 {
     "jupyter.jupyterServerType": "local",
-    "jupyter.allowUnauthorizedRemoteConnection": true
+    "jupyter.allowUnauthorizedRemoteConnection": true,
+    "python.pythonPath": "/opt/bitnami/python/bin/python",
+    "python.languageServer": "Pylance",
+    "python.defaultInterpreterPath": "/opt/bitnami/python/bin/python",
+    "python.disableInstallationCheck": true,
+    "jupyter.disableJupyterAutoStart": true
 }
