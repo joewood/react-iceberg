@@ -1,10 +1,8 @@
 {
-  "name": "pyspark",
+  "name": "react-iceberg",
   "build": {
     "dockerfile": "./Dockerfile",
   },
-  // "image": "jupyter/pyspark-notebook",
-
   // Set *default* container specific settings.json values on container create.
   "settings": {
     "terminal.integrated.shell.linux": "/bin/bash"
@@ -16,17 +14,15 @@
     "dvirtz.parquet-viewer",
     "ms-toolsai.jupyter"
   ],
-  "remoteEnv": {
-    "PYSPARK_DRIVER_PYTHON":"jupyter",
-    "PYSPARK_DRIVER_PYTHON_OPTS":"notebook"
-  },
+  // "remoteEnv": {
+    // "PYSPARK_DRIVER_PYTHON":"jupyter",
+    // "PYSPARK_DRIVER_PYTHON_OPTS":"notebook"
+  // },
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   "forwardPorts": [8888, 4040, 4041],
-
-  
-  // Uncomment to use the Docker CLI from inside the container. See https://aka.ms/vscode-remote/samples/docker-from-docker.
-  // "mounts": [ "source=/var/run/docker.sock,target=/var/run/docker.sock,type=bind" ],
+  "postAttachCommand": ["bash","-c","-i","./test.sh"],
+  "shutdownAction": "stopContainer",
 
   // Uncomment when using a ptrace-based debugger like C++, Go, and Rust
   // "runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],

@@ -2,3 +2,5 @@
 /metastore_db
 *.log
 proxylogon*.json
+/data/warehouse
+/data/*.json
