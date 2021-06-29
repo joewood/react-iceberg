@@ -1,0 +1,26 @@
+{
+    "name": "react-iceberg-workspace",
+    "version": "0.0.1",
+    "description": "",
+    "private": true,
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/joewood/react-iceberg.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/joewood/react-iceberg/issues"
+    },
+    "homepage": "https://github.com/joewood/react-iceberg#readme",
+    "dependencies": {},
+    "workspaces": [
+        "test/app",
+        "react-iceberg"
+    ],
+    "prettier": {
+        "tabWidth": 4,
+        "printWidth": 120
+    }
+}

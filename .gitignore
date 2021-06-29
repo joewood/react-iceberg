@@ -1,6 +1,11 @@
 /warehouse
-/metastore_db
 *.log
-proxylogon*.json
-/data/warehouse
-/data/*.json
+/test/warehouse
+/test/app/build
+/node_modules
+/test/app/node_modules
+/dist
+/types
+/react-iceberg/types
+/react-iceberg/dist
+*.tsbuildinfo

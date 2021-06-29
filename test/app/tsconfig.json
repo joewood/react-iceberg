@@ -1,0 +1,8 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+      "noEmit": true,
+    },
+    "include": ["src","../warehouse/db/table/metadata"],
+    "references": [{ "path": "../../react-iceberg" }]
+}

@@ -42,7 +42,7 @@ RUN python -m pip install -U ipykernel requests pyspark==3.0.2 notebook pylint
 #### Install NodeJS
 FROM spark_base
 
-ENV NODE_VERSION 14.17.1
+ENV NODE_VERSION 16.4.0
 ENV ARCH=x64
 
 RUN apt-get update --yes && \
@@ -51,7 +51,6 @@ RUN apt-get update --yes && \
 
 RUN NODE_FILE="node-v${NODE_VERSION}-linux-${ARCH}.tar.xz" \
     && NODE_URL="https://nodejs.org/dist/v${NODE_VERSION}/${NODE_FILE}" \
-    && echo $NODE_FILE \
     && curl -fsSLO --compressed $NODE_URL  \
     && ls -la /usr/local \ 
     && tar -xJf $NODE_FILE -C /usr/local --strip-components=1 --no-same-owner \

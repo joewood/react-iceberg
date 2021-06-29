@@ -1,0 +1,4 @@
+{
+  "files": [],
+  "references": [{ "path": "react-iceberg" }, { "path": "test/app" }]
+}

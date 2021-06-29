@@ -3,6 +3,11 @@
   "build": {
     "dockerfile": "./Dockerfile",
   },
+  "mounts": [
+    // use empty local volumes for node_modules (keeping file operations local to docker)
+    // "type=tmpfs,target=/workspaces/react-iceberg/node_modules",
+    // "type=tmpfs,target=/workspaces/react-iceberg/test/app/node_modules"
+  ],
   // Set *default* container specific settings.json values on container create.
   "settings": {
     "terminal.integrated.shell.linux": "/bin/bash"
@@ -12,22 +17,17 @@
   "extensions": [
     "ms-python.python",
     "dvirtz.parquet-viewer",
-    "ms-toolsai.jupyter"
+    "ms-toolsai.jupyter",
+    "doggy8088.quicktype-refresh",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint"
   ],
-  // "remoteEnv": {
-    // "PYSPARK_DRIVER_PYTHON":"jupyter",
-    // "PYSPARK_DRIVER_PYTHON_OPTS":"notebook"
-  // },
 
   // Use 'forwardPorts' to make a list of ports inside the container available locally.
   "forwardPorts": [8888, 4040, 4041],
-  "postAttachCommand": ["bash","-c","-i","./test.sh"],
+  "postStartCommand": "npm ci",
+  "postAttachCommand": ["bash","-c","-i","./test/setup-test-data.sh"],
   "shutdownAction": "stopContainer",
 
-  // Uncomment when using a ptrace-based debugger like C++, Go, and Rust
-  // "runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
-
-  // Comment out connect as root instead. More info: https://aka.ms/vscode-remote/containers/non-root.
   "remoteUser": "vscode"
-  // this is the user defined in the jupyter container
 }

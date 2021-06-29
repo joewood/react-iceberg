@@ -1,0 +1,804 @@
+{
+  "format-version" : 1,
+  "table-uuid" : "dff8a8b5-6a5e-40db-b209-c122213e67a0",
+  "location" : "/workspaces/react-iceberg/test/warehouse/db/table",
+  "last-updated-ms" : 1624650424088,
+  "last-column-id" : 151,
+  "schema" : {
+    "type" : "struct",
+    "fields" : [ {
+      "id" : 1,
+      "name" : "@timestamp",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 2,
+      "name" : "AccessList",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 3,
+      "name" : "AccessMask",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 4,
+      "name" : "AccessReason",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 5,
+      "name" : "Application",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 6,
+      "name" : "Archived",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 7,
+      "name" : "AuthenticationPackageName",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 8,
+      "name" : "CallTrace",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 9,
+      "name" : "Channel",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 10,
+      "name" : "ClientInfo",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 11,
+      "name" : "CommandLine",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 12,
+      "name" : "Company",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 13,
+      "name" : "CreationUtcTime",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 14,
+      "name" : "CurrentDirectory",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 15,
+      "name" : "Description",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 16,
+      "name" : "DestAddress",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 17,
+      "name" : "DestPort",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 18,
+      "name" : "DestinationHostname",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 19,
+      "name" : "DestinationIp",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 20,
+      "name" : "DestinationIsIpv6",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 21,
+      "name" : "DestinationPort",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 22,
+      "name" : "DestinationPortName",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 23,
+      "name" : "Details",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 24,
+      "name" : "Device",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 25,
+      "name" : "Direction",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 26,
+      "name" : "DisabledPrivilegeList",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 27,
+      "name" : "ElevatedToken",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 28,
+      "name" : "EnabledPrivilegeList",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 29,
+      "name" : "EventCountTotal",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 30,
+      "name" : "EventID",
+      "required" : false,
+      "type" : "long"
+    }, {
+      "id" : 31,
+      "name" : "EventIdx",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 32,
+      "name" : "EventType",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 33,
+      "name" : "FileVersion",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 34,
+      "name" : "FilterRTID",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 35,
+      "name" : "GrantedAccess",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 36,
+      "name" : "GroupMembership",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 37,
+      "name" : "HandleId",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 38,
+      "name" : "Hashes",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 39,
+      "name" : "Hostname",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 40,
+      "name" : "Image",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 41,
+      "name" : "ImageLoaded",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 42,
+      "name" : "ImpersonationLevel",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 43,
+      "name" : "Initiated",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 44,
+      "name" : "IntegrityLevel",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 45,
+      "name" : "IpAddress",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 46,
+      "name" : "IpPort",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 47,
+      "name" : "IsExecutable",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 48,
+      "name" : "KeyLength",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 49,
+      "name" : "Keywords",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 50,
+      "name" : "LayerName",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 51,
+      "name" : "LayerRTID",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 52,
+      "name" : "Level",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 53,
+      "name" : "LmPackageName",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 54,
+      "name" : "LogonGuid",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 55,
+      "name" : "LogonId",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 56,
+      "name" : "LogonProcessName",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 57,
+      "name" : "LogonType",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 58,
+      "name" : "MandatoryLabel",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 59,
+      "name" : "Message",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 60,
+      "name" : "NewProcessId",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 61,
+      "name" : "NewProcessName",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 62,
+      "name" : "NewSd",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 63,
+      "name" : "NewState",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 64,
+      "name" : "NewThreadId",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 65,
+      "name" : "ObjectName",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 66,
+      "name" : "ObjectServer",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 67,
+      "name" : "ObjectType",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 68,
+      "name" : "OldSd",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 69,
+      "name" : "OriginalFileName",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 70,
+      "name" : "ParentCommandLine",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 71,
+      "name" : "ParentImage",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 72,
+      "name" : "ParentProcessGuid",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 73,
+      "name" : "ParentProcessId",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 74,
+      "name" : "ParentProcessName",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 75,
+      "name" : "PipeName",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 76,
+      "name" : "PrivilegeList",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 77,
+      "name" : "ProcessGuid",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 78,
+      "name" : "ProcessID",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 79,
+      "name" : "ProcessId",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 80,
+      "name" : "ProcessName",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 81,
+      "name" : "Product",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 82,
+      "name" : "Protocol",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 83,
+      "name" : "ProviderGuid",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 84,
+      "name" : "QueryName",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 85,
+      "name" : "QueryResults",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 86,
+      "name" : "QueryStatus",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 87,
+      "name" : "RelativeTargetName",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 88,
+      "name" : "RemoteMachineID",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 89,
+      "name" : "RemoteUserID",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 90,
+      "name" : "ResourceAttributes",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 91,
+      "name" : "ResourceManager",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 92,
+      "name" : "RestrictedAdminMode",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 93,
+      "name" : "RestrictedSidCount",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 94,
+      "name" : "RuleName",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 95,
+      "name" : "Service",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 96,
+      "name" : "Session",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 97,
+      "name" : "ShareLocalPath",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 98,
+      "name" : "ShareName",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 99,
+      "name" : "Signature",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 100,
+      "name" : "SignatureStatus",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 101,
+      "name" : "Signed",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 102,
+      "name" : "SourceAddress",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 103,
+      "name" : "SourceHandleId",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 104,
+      "name" : "SourceHostname",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 105,
+      "name" : "SourceImage",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 106,
+      "name" : "SourceIp",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 107,
+      "name" : "SourceIsIpv6",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 108,
+      "name" : "SourceName",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 109,
+      "name" : "SourcePort",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 110,
+      "name" : "SourcePortName",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 111,
+      "name" : "SourceProcessGUID",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 112,
+      "name" : "SourceProcessGuid",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 113,
+      "name" : "SourceProcessId",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 114,
+      "name" : "SourceThreadId",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 115,
+      "name" : "StartAddress",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 116,
+      "name" : "StartFunction",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 117,
+      "name" : "StartModule",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 118,
+      "name" : "Status",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 119,
+      "name" : "SubjectDomainName",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 120,
+      "name" : "SubjectLogonId",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 121,
+      "name" : "SubjectUserName",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 122,
+      "name" : "SubjectUserSid",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 123,
+      "name" : "TargetDomainName",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 124,
+      "name" : "TargetFilename",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 125,
+      "name" : "TargetHandleId",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 126,
+      "name" : "TargetImage",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 127,
+      "name" : "TargetInfo",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 128,
+      "name" : "TargetLinkedLogonId",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 129,
+      "name" : "TargetLogonGuid",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 130,
+      "name" : "TargetLogonId",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 131,
+      "name" : "TargetObject",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 132,
+      "name" : "TargetOutboundDomainName",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 133,
+      "name" : "TargetOutboundUserName",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 134,
+      "name" : "TargetProcessGUID",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 135,
+      "name" : "TargetProcessGuid",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 136,
+      "name" : "TargetProcessId",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 137,
+      "name" : "TargetServerName",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 138,
+      "name" : "TargetUserName",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 139,
+      "name" : "TargetUserSid",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 140,
+      "name" : "Task",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 141,
+      "name" : "TerminalSessionId",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 142,
+      "name" : "TimeCreated",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 143,
+      "name" : "TokenElevationType",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 144,
+      "name" : "TransactionId",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 145,
+      "name" : "TransmittedServices",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 146,
+      "name" : "User",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 147,
+      "name" : "UtcTime",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 148,
+      "name" : "VirtualAccount",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 149,
+      "name" : "WorkstationName",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 150,
+      "name" : "param1",
+      "required" : false,
+      "type" : "string"
+    }, {
+      "id" : 151,
+      "name" : "param2",
+      "required" : false,
+      "type" : "string"
+    } ]
+  },
+  "partition-spec" : [ ],
+  "default-spec-id" : 0,
+  "partition-specs" : [ {
+    "spec-id" : 0,
+    "fields" : [ ]
+  } ],
+  "default-sort-order-id" : 0,
+  "sort-orders" : [ {
+    "order-id" : 0,
+    "fields" : [ ]
+  } ],
+  "properties" : {
+    "owner" : "vscode"
+  },
+  "current-snapshot-id" : 3194098807676932291,
+  "snapshots" : [ {
+    "snapshot-id" : 3194098807676932291,
+    "timestamp-ms" : 1624650423975,
+    "summary" : {
+      "operation" : "append",
+      "spark.app.id" : "local-1624650406821",
+      "added-data-files" : "1",
+      "added-records" : "10487",
+      "added-files-size" : "336203",
+      "changed-partition-count" : "1",
+      "total-records" : "10487",
+      "total-data-files" : "1",
+      "total-delete-files" : "0",
+      "total-position-deletes" : "0",
+      "total-equality-deletes" : "0"
+    },
+    "manifest-list" : "/workspaces/react-iceberg/test/warehouse/db/table/metadata/snap-3194098807676932291-1-9030f596-dda5-4797-9194-4933cf548458.avro"
+  } ],
+  "snapshot-log" : [ {
+    "timestamp-ms" : 1624650423975,
+    "snapshot-id" : 3194098807676932291
+  } ],
+  "metadata-log" : [ ]
+}

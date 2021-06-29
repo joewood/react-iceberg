@@ -1,0 +1,42 @@
+{
+    "name": "react-iceberg",
+    "version": "0.0.1",
+    "description": "",
+    "main": "dist/index.js",
+    "directories": {
+        "test": "dist"
+    },
+    "scripts": {
+        "build": "tsc -p .",
+        "start": "tsc -p . && tsc -p . --watch",
+        "clean": "rm -rf dist && rm -rf types",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/joewood/react-iceberg.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/joewood/react-iceberg/issues"
+    },
+    "homepage": "https://github.com/joewood/react-iceberg#readme",
+    "dependencies": {},
+    "types": "types",
+    "prettier": {
+        "tabWidth": 4,
+        "printWidth": 120
+    },
+    "peerDependencies": {
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2"
+    },
+    "devDependencies": {
+        "@types/react": "^17.0.11",
+        "@types/react-dom": "^17.0.8",
+        "eslint": "^7.29.0",
+        "typescript": "^4.3.4"
+    }
+}
