@@ -1,0 +1,49 @@
+version: "3"
+
+services:
+    dev:
+        build:
+            context: .
+            dockerfile: Dockerfile
+        environment:
+            - GITHUB_PAT
+            - GITHUB_USERNAME
+        volumes:
+            - ..:/workspaces/react-iceberg:cached
+        network_mode: service:minio
+        depends_on:
+            - minio
+            - initContainer
+        # Overrides default command so things don't shut down after the process ends.
+        command: /bin/sh -c "while sleep 1000; do :; done"
+
+    # You can include other services not opened by VS Code as well
+    minio:
+        image: minio/minio:latest
+        hostname: minio
+        restart: unless-stopped
+        ports:
+            - 9000:9000
+        volumes:
+            - ../test/warehouse/data:/data
+        environment:
+            MINIO_ROOT_USER: vscode
+            MINIO_ROOT_PASSWORD: password
+        command:
+            server /data
+
+    # Runs at startup to create the catalog bucket in Minio
+    initContainer:
+        image: minio/mc:latest
+        network_mode: service:minio
+        depends_on:
+            - minio
+        entrypoint: >
+            /bin/sh -c "
+            /bin/sleep 10;
+            /usr/bin/mc alias set iceberg http://minio:9000 vscode password;
+            /usr/bin/mc rb iceberg/catalog;
+            /usr/bin/mc mb iceberg/catalog;
+            /usr/bin/mc ls iceberg;
+            exit 0;
+            "
