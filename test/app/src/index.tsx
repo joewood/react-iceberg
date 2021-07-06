@@ -9,20 +9,21 @@ import {
     TabList,
     TabPanel,
     TabPanels,
-    Tabs
+    Tabs,
 } from "@chakra-ui/react";
 import * as React from "react";
 import { FC, StrictMode } from "react";
 import ReactDOM from "react-dom";
-import { IcebergMetadata, IcebergTableUpdated, useMetadata } from "react-iceberg";
+import { IcebergMetadata, IcebergTableUpdated, useManifests, useMetadata } from "react-iceberg";
 
 const App: FC = () => {
-    const { metadata, error, options } = useMetadata("catalog",{
+    const { metadata, error, options } = useMetadata("catalog", {
         accessKeyId: "vscode",
         secretAccessKey: "password",
         // TODO: this should be able to use the proxy (window.location.origin)
         endpoint: "http://localhost:9000",
     });
+    const manifests = useManifests(metadata, options);
     return (
         <Box p={4}>
             {error ? (

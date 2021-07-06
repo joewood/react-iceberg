@@ -1,6 +1,6 @@
 import * as React from "react";
-import { FC, useEffect } from "react";
-import { deserializeAvro, getFile, readAvro, S3Options } from "./file-io";
+import { FC } from "react";
+import { S3Options } from "./file-io";
 import { Snapshot, Table } from "./iceberg-types";
 
 interface Props {
@@ -16,23 +16,6 @@ export const IcebergTableUpdated: FC<Props> = ({ table, options }) => {
         location,
         snapshots,
     } = table;
-    useEffect(() => {
-        if (!snapshots || !snapshots[0]) return;
-        let avroFile = snapshots[0]["manifest-list"];
-        avroFile = avroFile.replace("s3a://", "");
-        const [bucket, ...pathParts] = avroFile.split("/");
-        const path = pathParts.join("/");
-        getFile(bucket, path,options).then((manifestAvroBuffer) => {
-            // const buffer = Buffer.from(manifestAvroBuffer);
-            deserializeAvro(manifestAvroBuffer)
-                .then((metadata) => {
-                    console.log("SUCCESSED", metadata);
-                    if (metadata) readAvro(metadata, manifestAvroBuffer.buffer);
-                })
-                .catch((err) => console.error("ERROR", err));
-        });
-    }, [snapshots]);
-
     return (
         <div
             style={{

@@ -3,6 +3,6 @@
     "compilerOptions": {
       "noEmit": true,
     },
-    "include": ["src","../warehouse/db/table/metadata"],
+    "include": ["src"],
     "references": [{ "path": "../../react-iceberg" }]
 }

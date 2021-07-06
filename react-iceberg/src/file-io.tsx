@@ -64,7 +64,7 @@ export async function deserializeAvro(array8: Uint8Array): Promise<Schema | null
         })
 
             .on("data", (_data: any) => {
-                console.log("data ");
+                console.log("data ",_data.pipe);
             })
             .on("metadata", (_meta: any, f: any) => {
                 console.log("META", metadata);
