@@ -3,6 +3,9 @@
     "version": "0.0.1",
     "description": "",
     "private": true,
+    "scripts": {
+        "start": "concurrently -n 'react-iceberg,test/app' -c 'black.bgBlue.bold,bgDarkGreen.bold' 'npm -w react-iceberg run start' 'npm -w test/app run start' "
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/joewood/react-iceberg.git"
@@ -14,7 +17,6 @@
         "url": "https://github.com/joewood/react-iceberg/issues"
     },
     "homepage": "https://github.com/joewood/react-iceberg#readme",
-    "dependencies": {},
     "workspaces": [
         "test/app",
         "react-iceberg"
@@ -22,5 +24,12 @@
     "prettier": {
         "tabWidth": 4,
         "printWidth": 120
+    },
+    "devDependencies": {
+        "@types/http-proxy-middleware": "^1.0.0",
+        "concurrently": "^6.2.0"
+    },
+    "dependencies": {
+        "http-proxy-middleware": "^0.19.1"
     }
 }

@@ -16,6 +16,7 @@ export const IcebergMetadata: FC<Props> = ({ schema: schema }) => {
                 rowGap: 5,
                 border: "1px solid #333",
                 width: "100%",
+                padding: 10,
             }}
         >
             <div style={{ padding: 4, backgroundColor: "#aaa", borderBottom: "2px solid black" }}>ID</div>

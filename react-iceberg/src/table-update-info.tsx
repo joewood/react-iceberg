@@ -1,12 +1,14 @@
 import * as React from "react";
-import { FC } from "react";
-import { Schema, Snapshot, Table } from "./iceberg-types";
+import { FC, useEffect } from "react";
+import { deserializeAvro, getFile, readAvro, S3Options } from "./file-io";
+import { Snapshot, Table } from "./iceberg-types";
 
 interface Props {
     table: Table;
+    options: S3Options;
 }
 
-export const IcebergTableUpdated: FC<Props> = ({ table }) => {
+export const IcebergTableUpdated: FC<Props> = ({ table, options }) => {
     const {
         properties,
         "current-snapshot-id": currentSnapshot,
@@ -14,6 +16,23 @@ export const IcebergTableUpdated: FC<Props> = ({ table }) => {
         location,
         snapshots,
     } = table;
+    useEffect(() => {
+        if (!snapshots || !snapshots[0]) return;
+        let avroFile = snapshots[0]["manifest-list"];
+        avroFile = avroFile.replace("s3a://", "");
+        const [bucket, ...pathParts] = avroFile.split("/");
+        const path = pathParts.join("/");
+        getFile(bucket, path,options).then((manifestAvroBuffer) => {
+            // const buffer = Buffer.from(manifestAvroBuffer);
+            deserializeAvro(manifestAvroBuffer)
+                .then((metadata) => {
+                    console.log("SUCCESSED", metadata);
+                    if (metadata) readAvro(metadata, manifestAvroBuffer.buffer);
+                })
+                .catch((err) => console.error("ERROR", err));
+        });
+    }, [snapshots]);
+
     return (
         <div
             style={{
@@ -23,7 +42,7 @@ export const IcebergTableUpdated: FC<Props> = ({ table }) => {
                 gridTemplateRows: "20px auto",
                 columnGap: 10,
                 border: "1px solid #333",
-                padding: 3,
+                padding: 10,
                 rowGap: 5,
             }}
         >
@@ -35,11 +54,11 @@ export const IcebergTableUpdated: FC<Props> = ({ table }) => {
             />
             <KeyValue field="Location:" value={location} />
             {Object.entries(properties).map(([key, value]) => (
-                <KeyValue field={key} value={value} elementKey="properties" />
+                <KeyValue key={key} field={key} value={value} elementKey="properties" />
             ))}
             <KeyValue field="Snapshots" value="" />
             {snapshots.map((snapshot) => (
-                <TableSnapshot snapshot={snapshot} />
+                <TableSnapshot key={snapshot["snapshot-id"]} snapshot={snapshot} />
             ))}
         </div>
     );

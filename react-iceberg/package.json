@@ -8,7 +8,7 @@
     },
     "scripts": {
         "build": "tsc -p .",
-        "start": "tsc -p . && tsc -p . --watch",
+        "start": "tsc -p . && tsc -p . --watch --preserveWatchOutput",
         "clean": "rm -rf dist && rm -rf types",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
@@ -23,7 +23,12 @@
         "url": "https://github.com/joewood/react-iceberg/issues"
     },
     "homepage": "https://github.com/joewood/react-iceberg#readme",
-    "dependencies": {},
+    "dependencies": {
+        "@types/aws-sdk": "^2.7.0",
+        "avro-js": "^1.10.2",
+        "avsc": "^5.7.1",
+        "aws-sdk": "^2.939.0"
+    },
     "types": "types",
     "prettier": {
         "tabWidth": 4,

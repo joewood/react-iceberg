@@ -1,33 +1,66 @@
+import {
+    Alert,
+    AlertDescription,
+    AlertIcon,
+    AlertTitle,
+    Box,
+    ChakraProvider,
+    Tab,
+    TabList,
+    TabPanel,
+    TabPanels,
+    Tabs
+} from "@chakra-ui/react";
 import * as React from "react";
-import { useEffect } from "react";
-import { FC, StrictMode, useState } from "react";
+import { FC, StrictMode } from "react";
 import ReactDOM from "react-dom";
-import { IcebergMetadata, Table, IcebergTableUpdated } from "react-iceberg";
+import { IcebergMetadata, IcebergTableUpdated, useMetadata } from "react-iceberg";
 
 const App: FC = () => {
-    const [icebergTableMetadata, setIcebergTableMetadata] = useState<Table>();
-    useEffect(() => {
-        (async () => {
-            return await (await fetch("/v1.metadata.json")).json();
-        })().then(setIcebergTableMetadata);
-    }, [setIcebergTableMetadata]);
+    const { metadata, error, options } = useMetadata("catalog",{
+        accessKeyId: "vscode",
+        secretAccessKey: "password",
+        // TODO: this should be able to use the proxy (window.location.origin)
+        endpoint: "http://localhost:9000",
+    });
     return (
-        <div>
-            <div style={{ width: 600, margin: 5 }}>
-                <h2>Update</h2>
-                {icebergTableMetadata && <IcebergTableUpdated table={icebergTableMetadata} />}
-            </div>
-            <div style={{ width: 400, margin: 5 }}>
-                <h2>Schema</h2>
-                {icebergTableMetadata && <IcebergMetadata schema={icebergTableMetadata.schema} />}
-            </div>
-        </div>
+        <Box p={4}>
+            {error ? (
+                <Alert status="error">
+                    <AlertIcon />
+                    <AlertTitle mr={2}>Error Loading Metadata</AlertTitle>
+                    <AlertDescription>{JSON.stringify(error)}</AlertDescription>
+                </Alert>
+            ) : (
+                <Tabs>
+                    <TabList>
+                        <Tab>Metadata</Tab>
+                        <Tab>Schema</Tab>
+                        <Tab>Data</Tab>
+                    </TabList>
+                    <TabPanels>
+                        <TabPanel>
+                            <Box maxWidth={800} m={5}>
+                                {metadata && <IcebergTableUpdated table={metadata} options={options} />}
+                            </Box>
+                        </TabPanel>
+                        <TabPanel>
+                            <Box maxWidth={800} m={5}>
+                                {metadata && <IcebergMetadata schema={metadata.schema} />}
+                            </Box>
+                        </TabPanel>
+                    </TabPanels>
+                </Tabs>
+            )}
+        </Box>
     );
 };
 
 ReactDOM.render(
     <StrictMode>
-        <App />
+        <ChakraProvider>
+            <App />
+        </ChakraProvider>
     </StrictMode>,
     document.getElementById("root")
 );
