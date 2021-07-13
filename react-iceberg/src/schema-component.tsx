@@ -1,12 +1,12 @@
 import * as React from "react";
 import { FC } from "react";
-import { Schema, Table } from "./iceberg-types";
+import { Schema } from "./iceberg-types";
 
 interface Props {
     schema: Schema;
 }
 
-export const IcebergMetadata: FC<Props> = ({ schema: schema }) => {
+export const IcebergSchema: FC<Props> = ({ schema: schema }) => {
     return (
         <div
             style={{
@@ -19,10 +19,25 @@ export const IcebergMetadata: FC<Props> = ({ schema: schema }) => {
                 padding: 10,
             }}
         >
-            <div style={{ padding: 4, backgroundColor: "#aaa", borderBottom: "2px solid black" }}>ID</div>
-            <div style={{ padding: 4, backgroundColor: "#aaa", borderBottom: "2px solid black" }}>Field</div>
-            <div style={{ padding: 4, backgroundColor: "#aaa", borderBottom: "2px solid black" }}>Type</div>
-            {schema.fields.map((f, i) => (
+            <div
+                key="ID"
+                style={{ padding: 4, backgroundColor: "#aaa", fontWeight: "bold", borderBottom: "2px solid black" }}
+            >
+                ID
+            </div>
+            <div
+                key="Field"
+                style={{ padding: 4, backgroundColor: "#aaa", fontWeight: "bold", borderBottom: "2px solid black" }}
+            >
+                Field
+            </div>
+            <div
+                key="Type"
+                style={{ padding: 4, backgroundColor: "#aaa", fontWeight: "bold", borderBottom: "2px solid black" }}
+            >
+                Type
+            </div>
+            {schema.fields.map((f) => (
                 <>
                     <div key={f.name + "_id"} style={{ paddingRight: 6, textAlign: "right" }}>
                         {f.id}

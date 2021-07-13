@@ -2,16 +2,30 @@ import * as AWS from "aws-sdk";
 
 import { Type, streams, types, Schema } from "avsc";
 const { BlockDecoder } = streams;
+var toBuffer = require("typedarray-to-buffer");
 
 export interface S3Options {
-    accessKeyId: string,
-    secretAccessKey: string,
-    endpoint:string;
+    accessKeyId: string;
+    secretAccessKey: string;
+    endpoint: string;
+}
+
+function bufToBn(buf: Uint8Array) {
+    const byt = buf.slice(buf.byteOffset, buf.byteOffset + 8);
+    const hex = byt.reduce((p, i) => {
+        var h = i.toString(16);
+        if (h.length % 2) {
+            h = "0" + h;
+        }
+        return h + p;
+    }, "");
+    return BigInt("0x" + hex);
 }
 
 const longType = types.LongType.__with({
-    fromBuffer: (buf: Buffer) => {
-        buf.readBigInt64LE();
+    fromBuffer: (buf: Uint8Array) => {
+        const ttt = bufToBn(buf);
+        return ttt;
     },
     toBuffer: (n: bigint) => {
         const buf = Buffer.alloc(8);
@@ -32,7 +46,7 @@ export async function getFile(bucket: string, path: string, s3Options: S3Options
             ...s3Options,
             signatureVersion: "v4",
             s3ForcePathStyle: true,
-            endpoint: s3Options.endpoint || window.location.origin
+            endpoint: s3Options.endpoint || window.location.origin,
         });
         const s3Object = await client.getObject({ Bucket: bucket, Key: path }).promise();
         if (!s3Object.Body) throw Error("Contents Empty");
@@ -51,28 +65,39 @@ export function readAvro(schema: Schema, buf: ArrayBufferLike) {
     console.log(r);
 }
 
-export async function deserializeAvro(array8: Uint8Array): Promise<Schema | null> {
+export async function deserializeAvro<T extends Object>(array8: Uint8Array): Promise<[T[], Schema | null]> {
     let metadata: Schema | null = null;
-    // let data: any = null;
+    const buffer: Buffer = Buffer.from(toBuffer(array8));
+    let decodeType: Type | null = null;
+    let moreData: T[] = [];
     return new Promise((resolve, reject) => {
         new BlockDecoder({
+            noDecode: true,
             parseHook: (schema) => {
-                console.log(schema);
                 metadata = schema;
-                return Type.forSchema(schema, { registry: { long: longType } }); //, { wrapUnions: true });
+                decodeType = Type.forSchema(schema, { registry: { long: longType } }); //, { wrapUnions: true });
+                return decodeType;
             },
         })
 
             .on("data", (_data: any) => {
-                console.log("data ",_data.pipe);
-            })
-            .on("metadata", (_meta: any, f: any) => {
-                console.log("META", metadata);
+                if (!decodeType) {
+                    reject("Error deserializing: Schema not found in file");
+                    return;
+                }
+                try {
+                    moreData.push(decodeType.fromBuffer(toBuffer(_data)) as T);
+                } catch (e) {
+                    reject("Error deserializing: " + e.message);
+                }
             })
             .on("end", () => {
-                resolve(metadata);
+                resolve([moreData, metadata]);
             })
-            .on("error", (err) => reject(err))
-            .end(array8.buffer);
+            .on("error", (err) => {
+                console.error("Error", err);
+                reject(err);
+            })
+            .end(buffer);
     });
 }

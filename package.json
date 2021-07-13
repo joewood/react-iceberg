@@ -30,6 +30,10 @@
         "concurrently": "^6.2.0"
     },
     "dependencies": {
-        "http-proxy-middleware": "^0.19.1"
+        "@types/react": "^17.0.14",
+        "@types/react-dom": "^17.0.9",
+        "http-proxy-middleware": "^0.19.1",
+        "react": "^17.0.2",
+        "react-dom": "^17.0.2"
     }
 }

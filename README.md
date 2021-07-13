@@ -2,7 +2,11 @@
 
 A set of React components to visualize [Apache Iceberg](https://iceberg.apache.org/) Tables.
 
+![Screenshot](./docs/screenshot.png)
+
 ## Usage
+
+**NOTE** - this component is very much experimental
 
 ```bash
 $ npm install react-iceberg
@@ -37,10 +41,10 @@ These components are in the early stages of development. The repository includes
 
 The dev container environment provides the following:
 
-* [Apache Spark](https://spark.apache.org/) container with a single master running in local mode, this includes the Apache Iceberg libraries and configured catalog
-* A [Minio Container](https://github.com/minio/minio) providing an S3 compatible service
-* An init-container that runs setup script configuring the S3 based environment
-* [Create React App](https://create-react-app.dev/docs/getting-started/) test application for development inside the containerized environment
+-   [Apache Spark](https://spark.apache.org/) container with a single master running in local mode, this includes the Apache Iceberg libraries and configured catalog
+-   A [Minio Container](https://github.com/minio/minio) providing an S3 compatible service
+-   An init-container that runs setup script configuring the S3 based environment
+-   [Create React App](https://create-react-app.dev/docs/getting-started/) test application for development inside the containerized environment
 
 The Apache Iceberg catalog and table is created using the **create-test-table.py** script, this is submitted using the following command:
 
