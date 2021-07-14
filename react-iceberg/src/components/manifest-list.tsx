@@ -1,18 +1,18 @@
 import * as React from "react";
 import { FC, useEffect } from "react";
-import { KeyValue } from "./common";
-import { S3Options } from "./file-io";
-import { ManifestFile, useManifestFiles } from "./hooks";
+import { KeyValue } from "./key-value";
+import { S3Options } from "../file-io";
+import { ManifestFile, useManifestFiles } from "../hooks";
 
 interface ManifestListPropsBase {
     selected?: ManifestFile | undefined;
     onSelected?: (manifestFile: ManifestFile) => void;
-    onLoaded?: (manifestFiles: ManifestFile[]) => void;
 }
 
 interface ManifestListPropsS3 extends ManifestListPropsBase {
     manifestList: string;
     options: S3Options;
+    onLoaded?: (manifestFiles: ManifestFile[]) => void;
 }
 
 export const IcebergManifestListS3: FC<ManifestListPropsS3> = ({ options, manifestList, onLoaded, ...other }) => {
@@ -34,8 +34,7 @@ export const IcebergManifestList: FC<Props> = ({ manifestFile }) => {
         <div
             style={{
                 display: "grid",
-                width: "100%",
-                gridTemplateColumns: "auto 1fr",
+                gridTemplateColumns: "auto auto",
                 gridTemplateRows: "auto",
                 columnGap: 10,
                 rowGap: 5,

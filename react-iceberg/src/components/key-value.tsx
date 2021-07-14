@@ -62,17 +62,15 @@ export const KeyValue: FC<KeyValueProps> = ({ field, value, elementKey, paddingL
         );
     }
 
-    if (!Array.isArray(value) && ( !Number.isNaN(Number.parseInt( Object.keys(value)[0])))) {
-        value = Object.entries(value ).reduce( (p,[k,v])=> {
-            p[ parseInt(k)]=v; 
+    if (!Array.isArray(value) && !Number.isNaN(Number.parseInt(Object.keys(value)[0]))) {
+        value = Object.entries(value).reduce((p, [k, v]) => {
+            p[parseInt(k)] = v;
             return p;
-        },[] as any[]);
-        console.log("Converted to array", value)
+        }, [] as any[]);
     }
 
     // For Arrays, check for zero length arrays return just the name, otherwise iterate over the array
     if (Array.isArray(value)) {
-        // if (field === "lower_bounds") console.log("LB", typeof value);
         if (value.length === 0)
             return (
                 <>
@@ -99,7 +97,7 @@ export const KeyValue: FC<KeyValueProps> = ({ field, value, elementKey, paddingL
                 </>
             );
         }
-        if (typeof value[0] === "string" || typeof value[0] === "number" || typeof value[0] === "bigint")
+        if (typeof value[0] === "number" || typeof value[0] === "bigint")
             return (
                 <>
                     <KeyString
@@ -111,8 +109,6 @@ export const KeyValue: FC<KeyValueProps> = ({ field, value, elementKey, paddingL
                     />
                 </>
             );
-            else console.log("Type of " + typeof value[0],value[0]);
-        console.log((value as any).__proto__?.constructor?.name)
         return (
             <>
                 {value.map((arrayValue, index) => (
@@ -149,10 +145,8 @@ export const KeyValue: FC<KeyValueProps> = ({ field, value, elementKey, paddingL
         }
     } catch (e) {
         console.error(e);
-        console.log("v", value);
         return <></>;
     }
-  
 
     // Lastly, for Objects - output one row for the field name, then iterate over the object
     // call recursively

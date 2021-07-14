@@ -48,13 +48,13 @@ export interface DataFile {
     block_size_in_bytes: bigint; //	long	Deprecated. Always write a default in v1. Do not write in v2.
     file_ordinal: number; //	int	Deprecated. Do not write.
     sort_columns?: any; //	Deprecated. Do not write.
-    column_sizes: Record<string, bigint>; //	map<117: int, 118: long>	Map from column id to the total size on disk of all regions that store the column. Does not include bytes necessary to read other columns, like footers. Leave null for row-oriented formats (Avro)
-    value_counts?: Record<number, bigint>; //	map<119: int, 120: long>	Map from column id to number of values in the column (including null and NaN values)
-    null_value_counts?: Record<number, bigint>; //	Map from column id to number of null values in the column
-    nan_value_counts?: Record<number, bigint>; //	Map from column id to number of NaN values in the column
-    distinct_counts?: Record<number, bigint>; //	map<123: int, 124: long>	Deprecated. Do not write.
-    lower_bounds?: Record<number, Uint8Array>; //	map<126: int, 127: binary>	Map from column id to lower bound in the column serialized as binary [1]. Each value must be less than or equal to all non-null, non-NaN values in the column for the file [2]
-    upper_bounds?: Record<number, Uint8Array>; //>	Map from column id to upper bound in the column serialized as binary [1]. Each value must be greater than or equal to all non-null, non-Nan values in the column for the file [2]
+    column_sizes: { key: string; value: bigint | number }[]; //	map<117: int, 118: long>	Map from column id to the total size on disk of all regions that store the column. Does not include bytes necessary to read other columns, like footers. Leave null for row-oriented formats (Avro)
+    value_counts?: { key: string; value: bigint | number }[]; //	map<119: int, 120: long>	Map from column id to number of values in the column (including null and NaN values)
+    null_value_counts?: { key: string; value: bigint | number }[]; //	Map from column id to number of null values in the column
+    nan_value_counts?: { key: string; value: bigint | number }[]; //	Map from column id to number of NaN values in the column
+    distinct_counts?: { key: string; value: bigint | number }[]; //	map<123: int, 124: long>	Deprecated. Do not write.
+    lower_bounds?: Record<string, { key: number; value: Buffer }>; //	map<126: int, 127: binary>	Map from column id to lower bound in the column serialized as binary [1]. Each value must be less than or equal to all non-null, non-NaN values in the column for the file [2]
+    upper_bounds?: Record<string, { key: number; value: Buffer }>; //>	Map from column id to upper bound in the column serialized as binary [1]. Each value must be greater than or equal to all non-null, non-Nan values in the column for the file [2]
     key_metadata?: Uint8Array; //	binary	Implementation-specific key metadata for encryption
     split_offsets?: bigint[]; //	list<133: long>	Split offsets for the data file. For example, all row group offsets in a Parquet file. Must be sorted ascending
     equality_ids?: number[]; //	list<136: int>	Field ids used to determine row equality in equality delete files. Required when content=2 and should be null otherwise. Fields with ids listed in this column must be present in the delete file
@@ -127,23 +127,3 @@ export function useManifestEntries(manifestFile: ManifestFile, options: S3Option
     }, [manifestFile]);
     return manifestEntry || [];
 }
-
-// export function useManifests(metadata: Table | undefined, options: S3Options) {
-//     const snapshots = metadata?.snapshots;
-//     useEffect(() => {}, [snapshots]);
-//     useEffect(() => {
-//         if (!snapshots || !snapshots[0]) return;
-//         let avroFile = snapshots[0]["manifest-list"];
-//         if (!manifests[avroFile]) {
-//             fetcchAvroFile(avroFile, options).then(([url, manifest]) => {
-//                 setManifests((manifests) => ({ ...manifests, [url]: manifest }));
-//             });
-//         }
-//         const missingManifests = Object.values(manifests).filter((manifest) => !manifests[manifest.manifest_path]);
-//         console.log("Missing Manigest", missingManifests);
-//         Promise.all(missingManifests.map((manifest) => fetcchAvroFile(manifest.manifest_path, options))).then((ms) => {
-//             setManifests((manifests) => ms.reduce((p, c) => ({ ...p, [c[0]]: c[1] }), manifests));
-//         });
-//     }, [manifests, snapshots]);
-//     return manifests;
-// }

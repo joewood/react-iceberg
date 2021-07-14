@@ -59,11 +59,10 @@ export async function getFile(bucket: string, path: string, s3Options: S3Options
     }
 }
 
-export function readAvro(schema: Schema, buf: ArrayBufferLike) {
-    const t = Type.forSchema(schema);
-    const r = t.decode(buf as any);
-    console.log(r);
-}
+// export function readAvro(schema: Schema, buf: ArrayBufferLike) {
+//     const t = Type.forSchema(schema);
+//     const r = t.decode(buf as any);
+// }
 
 export async function deserializeAvro<T extends Object>(array8: Uint8Array): Promise<[T[], Schema | null]> {
     let metadata: Schema | null = null;

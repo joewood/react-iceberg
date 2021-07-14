@@ -1,4 +1,4 @@
-import { Box, ChakraProvider, Heading, HStack } from "@chakra-ui/react";
+import { Box, ChakraProvider, Flex, Heading, HStack } from "@chakra-ui/react";
 import * as React from "react";
 import { FC, StrictMode, useState } from "react";
 import ReactDOM from "react-dom";
@@ -12,10 +12,22 @@ import {
 import { ManifestEntry, ManifestFile } from "react-iceberg/src/hooks";
 import { Snapshot, Table } from "react-iceberg/src/iceberg-types";
 
-const BoxStep: FC<{ heading: string }> = ({ heading, children }) => (
-    <Box m={5} boxShadow="lg" padding={3}>
-        <Heading size="sm">{heading}</Heading> {children}
-    </Box>
+const BoxStep: FC<{ heading: string; width?: number }> = ({ heading, width = 300, children }) => (
+    <Flex m={5} boxShadow="lg" padding={0} flexDir="column" maxW={width} borderRadius={3}>
+        <Heading
+            size="sm"
+            alignSelf="stretch"
+            bgGradient="linear(to-r, gray.200, gray.500)"
+            p={2}
+            flex="auto 0 0"
+            isTruncated
+        >
+            {heading}
+        </Heading>
+        <Box p={3} overflow="hidden">
+            {children}
+        </Box>
+    </Flex>
 );
 
 const App: FC = () => {
@@ -34,9 +46,9 @@ const App: FC = () => {
             <BoxStep heading="Table: Catalog">
                 <IcebergTableS3
                     catalog="catalog"
-                    onSelectSnapshot={setSelectedSnapshot}
-                    selectedSnapshot={selectedSnapshot}
-                    onLoadedTable={setTable}
+                    onSelect={setSelectedSnapshot}
+                    selected={selectedSnapshot}
+                    onLoaded={setTable}
                     options={options}
                 />
             </BoxStep>
@@ -64,8 +76,9 @@ const App: FC = () => {
                     />
                 </BoxStep>
             )}
-            {manifestEntry && (
+            {manifestEntry && table && (
                 <BoxStep
+                    width={700}
                     heading={
                         "Manifest Entry: " +
                         (typeof manifestEntry.data_file === "string"
@@ -73,7 +86,7 @@ const App: FC = () => {
                             : manifestEntry.data_file.file_path)
                     }
                 >
-                    <IcebergManifestEntry manifestEntry={manifestEntry} />
+                    <IcebergManifestEntry manifestEntry={manifestEntry} schema={table.schema} />
                 </BoxStep>
             )}
         </HStack>

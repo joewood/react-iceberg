@@ -1,7 +1,7 @@
 import * as React from "react";
 import { FC } from "react";
-import { KeyValue } from "./common";
-import { Snapshot } from "./iceberg-types";
+import { KeyValue } from "./key-value";
+import { Snapshot } from "../iceberg-types";
 
 interface Props {
     snapshot: Snapshot[];
@@ -13,8 +13,7 @@ export const IcebergManifestList: FC<Props> = ({ snapshot }) => {
         <div
             style={{
                 display: "grid",
-                width: "100%",
-                gridTemplateColumns: "auto 1fr",
+                gridTemplateColumns: "auto auto",
                 gridTemplateRows: "auto",
                 columnGap: 10,
                 rowGap: 5,

@@ -5,8 +5,8 @@
         "declarationDir": "types",
         "noEmit": false,
         "rootDir": "src",
-        "outDir": "dist",
+        "outDir": "dist"
     },
     "files": ["src/index.tsx"],
-    "include": ["src/*.tsx","src/*.ts"]
+    "include": ["src/**/*.tsx", "src/**/*.ts"]
 }
