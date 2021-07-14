@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { deserializeAvro, getFile, S3Options } from "./file-io";
-import { Snapshot, Table } from "./iceberg-types";
+import { Table } from "./iceberg-types";
 
 interface Partition {
     contains_null: boolean;
@@ -8,14 +8,14 @@ interface Partition {
     upper_bound: Uint8Array | null;
 }
 
-export interface Manifest1 {
-    schema: ManifestEntry; //	JSON representation of the table schema at the time the manifest was written
-    schema_id?: string; //	ID of the schema used to write the manifest as a string
-    partition_spec?: string; //fields representation of the partition spec used to write the manifest
-    partition_spec_id: string; //	ID of the partition spec used to write the manifest as a string
-    format_version: string; //	Table format version number of the manifest as a string
-    Type?: any; // of content files tracked by the manifest: “data” or “deletes”
-}
+// export interface Manifest1 {
+//     schema: ManifestEntry; //	JSON representation of the table schema at the time the manifest was written
+//     schema_id?: string; //	ID of the schema used to write the manifest as a string
+//     partition_spec?: string; //fields representation of the partition spec used to write the manifest
+//     partition_spec_id: string; //	ID of the partition spec used to write the manifest as a string
+//     format_version: string; //	Table format version number of the manifest as a string
+//     Type?: any; // of content files tracked by the manifest: “data” or “deletes”
+// }
 
 export interface ManifestFile {
     manifest_path: string;
@@ -71,7 +71,7 @@ interface MetadataRet {
  * @param catalog - name of the S3 bucket that contains the table
  * @param s3Options - S3 connection options
  */
-export function useTableS3(catalog: string, s3Options: S3Options): MetadataRet {
+export function useTableLoader(catalog: string, s3Options: S3Options): MetadataRet {
     const [icebergTableMetadata, setIcebergTableMetadata] = useState<Table>();
     const [error, setError] = useState<string>();
     useEffect(() => {

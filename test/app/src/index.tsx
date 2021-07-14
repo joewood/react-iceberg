@@ -4,9 +4,9 @@ import { FC, StrictMode, useState } from "react";
 import ReactDOM from "react-dom";
 import {
     IcebergSchema,
-    IcebergManifestListS3,
-    IcebergTableS3,
-    IcebergManifestEntriesS3,
+    ManifestFileSelectorLoader,
+    TableViewLoader,
+    ManfiestEntrySelectorLoader,
     IcebergManifestEntry,
 } from "react-iceberg";
 import { ManifestEntry, ManifestFile } from "react-iceberg/src/hooks";
@@ -44,7 +44,7 @@ const App: FC = () => {
     return (
         <HStack p={4} fontSize="small" overflowX="scroll" alignItems="start">
             <BoxStep heading="Table: Catalog">
-                <IcebergTableS3
+                <TableViewLoader
                     catalog="catalog"
                     onSelect={setSelectedSnapshot}
                     selected={selectedSnapshot}
@@ -59,7 +59,7 @@ const App: FC = () => {
             )}
             {selectedSnapshot && (
                 <BoxStep heading={"Snapshot: " + selectedSnapshot["snapshot-id"]}>
-                    <IcebergManifestListS3
+                    <ManifestFileSelectorLoader
                         manifestList={selectedSnapshot["manifest-list"]}
                         onSelected={setManifestFile}
                         options={options}
@@ -68,9 +68,9 @@ const App: FC = () => {
             )}
             {manifestFile && (
                 <BoxStep heading={"Manifest Entry: " + manifestFile.manifest_path}>
-                    <IcebergManifestEntriesS3
+                    <ManfiestEntrySelectorLoader
                         manifestFile={manifestFile}
-                        onSelect={setManifestEntry}
+                        onSelected={setManifestEntry}
                         selected={manifestEntry}
                         options={options}
                     />

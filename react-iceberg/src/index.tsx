@@ -1,8 +1,8 @@
 export { getFile } from "./file-io";
-export { useManifestFiles, useTableS3 } from "./hooks";
+export { useManifestFiles, useTableLoader as useTableS3 } from "./hooks";
 export type { ManifestEntry, ManifestFile } from "./hooks";
 export type { Snapshot, Table } from "./iceberg-types";
-export { IcebergManifestEntriesS3, IcebergManifestEntry } from "./components/manifest-entry";
-export { IcebergManifestList, IcebergManifestListS3 } from "./components/manifest-list";
+export { ManfiestEntrySelectorLoader, IcebergManifestEntry } from "./components/manifest-entry-selector";
+export { ManifestFileSelector, ManifestFileSelectorLoader } from "./components/manifest-file-selector";
 export { IcebergSchema } from "./components/schema";
-export { IcebergTable, IcebergTableS3 } from "./components/table";
+export { TableView, TableViewLoader } from "./components/table";

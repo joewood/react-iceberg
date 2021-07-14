@@ -173,3 +173,17 @@ export const KeyValue: FC<KeyValueProps> = ({ field, value, elementKey, paddingL
         </>
     );
 };
+
+export const KeyValueContainer: FC = ({ children }) => (
+    <div
+        style={{
+            display: "grid",
+            gridTemplateColumns: "auto auto",
+            gridTemplateRows: "auto",
+            columnGap: 10,
+            rowGap: 5,
+        }}
+    >
+        {children}
+    </div>
+);
