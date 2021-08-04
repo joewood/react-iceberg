@@ -51,3 +51,7 @@ The Apache Iceberg catalog and table is created using the **create-test-table.py
 ```bash
 $ spark-submit create-test-table.py
 ```
+## Contributions
+
+ * Joe Wood
+ * Yves-Noel
