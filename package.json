@@ -1,7 +1,7 @@
 {
     "name": "react-iceberg-workspace",
     "version": "0.0.1",
-    "description": "",
+    "description": "Workspace for React Iceberg components",
     "private": true,
     "scripts": {
         "start": "concurrently -n 'react-iceberg,test/app' -c 'black.bgBlue.bold,bgDarkGreen.bold' 'npm -w react-iceberg run start' 'npm -w test/app run start' "
