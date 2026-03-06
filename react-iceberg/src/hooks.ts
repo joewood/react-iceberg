@@ -99,7 +99,8 @@ async function fetcchAvroFile<T extends Object>(url: string, options: S3Options)
         if (!data) throw Error("Null data cannot process file " + path);
         return [url, data];
     } catch (e) {
-        throw Error("Error deserializing avro manifest file: " + e.message);
+        const message = e instanceof Error ? e.message : String(e);
+        throw Error("Error deserializing avro manifest file: " + message);
     }
 }
 

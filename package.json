@@ -25,15 +25,19 @@
         "tabWidth": 4,
         "printWidth": 120
     },
+    "overrides": {
+        "@types/react": "^18.3.27",
+        "@types/react-dom": "^18.3.7"
+    },
     "devDependencies": {
         "@types/http-proxy-middleware": "^1.0.0",
-        "concurrently": "^6.2.0"
+        "concurrently": "^9.2.1"
     },
     "dependencies": {
-        "@types/react": "^17.0.14",
-        "@types/react-dom": "^17.0.9",
-        "http-proxy-middleware": "^0.19.1",
-        "react": "^17.0.2",
-        "react-dom": "^17.0.2"
+        "@types/react": "^18.3.27",
+        "@types/react-dom": "^18.3.7",
+        "http-proxy-middleware": "^3.0.5",
+        "react": "^18.3.1",
+        "react-dom": "^18.3.1"
     }
 }

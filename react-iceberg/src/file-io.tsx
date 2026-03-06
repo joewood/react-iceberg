@@ -87,7 +87,8 @@ export async function deserializeAvro<T extends Object>(array8: Uint8Array): Pro
                 try {
                     moreData.push(decodeType.fromBuffer(toBuffer(_data)) as T);
                 } catch (e) {
-                    reject("Error deserializing: " + e.message);
+                    const message = e instanceof Error ? e.message : String(e);
+                    reject("Error deserializing: " + message);
                 }
             })
             .on("end", () => {

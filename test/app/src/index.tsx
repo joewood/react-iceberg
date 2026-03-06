@@ -1,4 +1,4 @@
-import { Box, ChakraProvider, Flex, Heading, HStack } from "@chakra-ui/react";
+import { Box, ChakraProvider, Flex, Heading, HStack, defaultSystem } from "@chakra-ui/react";
 import * as React from "react";
 import { FC, StrictMode, useState } from "react";
 import ReactDOM from "react-dom";
@@ -12,7 +12,11 @@ import {
 import { ManifestEntry, ManifestFile } from "react-iceberg/src/hooks";
 import { Snapshot, Table } from "react-iceberg/src/iceberg-types";
 
-const BoxStep: FC<{ heading: string; width?: number }> = ({ heading, width = 300, children }) => (
+const BoxStep: FC<React.PropsWithChildren<{ heading: string; width?: number }>> = ({
+    heading,
+    width = 300,
+    children,
+}) => (
     <Flex m={5} boxShadow="lg" padding={0} flexDir="column" maxW={width} borderRadius={3}>
         <Heading
             size="sm"
@@ -20,7 +24,7 @@ const BoxStep: FC<{ heading: string; width?: number }> = ({ heading, width = 300
             bgGradient="linear(to-r, gray.200, gray.500)"
             p={2}
             flex="auto 0 0"
-            isTruncated
+            truncate
         >
             {heading}
         </Heading>
@@ -95,9 +99,9 @@ const App: FC = () => {
 
 ReactDOM.render(
     <StrictMode>
-        <ChakraProvider>
+        <ChakraProvider value={defaultSystem}>
             <App />
         </ChakraProvider>
     </StrictMode>,
-    document.getElementById("root")
+    document.getElementById("root"),
 );

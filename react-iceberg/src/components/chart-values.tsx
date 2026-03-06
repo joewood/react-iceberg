@@ -19,7 +19,7 @@ export const ChartValues: FC<Props> = ({ values, schema, seriesName }) => {
                 data: values,
             },
         ],
-        []
+        [],
     );
     const primaryAxis = useMemo<AxisOptions<KeyValue>>(
         () => ({
@@ -33,7 +33,7 @@ export const ChartValues: FC<Props> = ({ values, schema, seriesName }) => {
                 tooltip: (x, f) => schema.fields[x as unknown as number]?.name,
             },
         }),
-        []
+        [],
     );
 
     const secondaryAxes = useMemo<AxisOptions<KeyValue>[]>(
@@ -45,7 +45,7 @@ export const ChartValues: FC<Props> = ({ values, schema, seriesName }) => {
                 elementType: "bar",
             },
         ],
-        []
+        [],
     );
     return (
         <div
@@ -55,7 +55,7 @@ export const ChartValues: FC<Props> = ({ values, schema, seriesName }) => {
                 gridColumn: "1/3",
             }}
         >
-            <Chart<KeyValue> options={{ data, primaryAxis, secondaryAxes, groupingMode: "primary", tooltip: true }} />
+            <Chart<KeyValue> options={{ data, primaryAxis, secondaryAxes, tooltip: true }} />
         </div>
     );
 };

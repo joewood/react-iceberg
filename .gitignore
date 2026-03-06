@@ -2,7 +2,7 @@
 *.log
 /test/warehouse
 /test/app/build
-/node_modules
+node_modules
 /test/app/node_modules
 /dist
 /types

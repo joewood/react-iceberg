@@ -174,7 +174,7 @@ export const KeyValue: FC<KeyValueProps> = ({ field, value, elementKey, paddingL
     );
 };
 
-export const KeyValueContainer: FC = ({ children }) => (
+export const KeyValueContainer: FC<React.PropsWithChildren> = ({ children }) => (
     <div
         style={{
             display: "grid",
